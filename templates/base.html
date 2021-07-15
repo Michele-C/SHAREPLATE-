@@ -25,17 +25,17 @@
         <!-- Selected this nav bar from materialise because as nav bar is resized the links turn into a hamburger icon-->
         <nav class="nav-extended text-shadow pink">
             <div class="nav-wrapper">
-                <a href="#" class="brand-logo">Share Plate</a>
+                <a href="{{ url_for('home') }}" class="brand-logo">Share Plate</a>
                 <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="fas fa-utensils"></i></a>
                 <ul class="right hide-on-med-and-down">
-                    <li><a href="#">Home</a></li>
+                    <li><a href="{{ url_for('home') }}">Home</a></li>
                     <li><a href="#">About Us</a></li>
                     <li><a href="#">Your Profile</a></li>
                     <li><a href="#">Add Recipe</a></li>
                     <li><a href="#">Add Category</a></li>
                     <li><a href="#">Log In</a></li>
                     <li><a href="#">Log Out</a></li>
-                    <li><a href="#">Sign Up</a></li>
+                    <li><a href="{{ url_for('register') }}">Sign Up</a></li>
                 </ul>
             </div>
         </nav>
@@ -44,14 +44,14 @@
 
         <ul class="sidenav pink" id="mobile-demo">
             <li><h4 class="center-align">Share Plate</h4></li>
-            <li><a href="#">Home</a></li>
+            <li><a href="{{ url_for('home') }}">Home</a></li>
             <li><a href="#">About Us</a></li>
             <li><a href="#">Your Profile</a></li>
             <li><a href="#">Add Recipe</a></li>
             <li><a href="#">Add Category</a></li>
             <li><a href="#">Log In</a></li>
             <li><a href="#">Log Out</a></li>
-            <li><a href="#">Sign Up</a></li>
+            <li><a href="{{ url_for('register') }}">Sign Up</a></li>
         </ul>
     </header>
 
