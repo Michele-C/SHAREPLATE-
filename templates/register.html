@@ -7,12 +7,13 @@
         <!-- Copied card set up form task manager mini project-->
 
         <form class="col s12 m8 offset-m2" method="POST" action="{{ url_for('register') }}">
-            <div class="card-panel pink">
+            <div class="card-panel">
                 <!-- username -->
                 <div class="row">
 					<div class="input-field col s12 white-text">
 						<i class="fas fa-pepper-hot prefix text-darken-4"></i>
-						<input id="username" name="username" type="text" class="validate">
+						<input id="username" name="username" type="text" minlength="3"
+                        maxlength="20" pattern="^[a-zA-Z0-9]{3,20}$" class="validate" required>
 						<label for="username">Username</label>
 					</div>
                 </div>
@@ -20,7 +21,8 @@
                 <div class="row">
                     <div class="input-field col s12 white-text">
 						<i class="fas fa-lemon prefix text-darken-4"></i>
-                        <input id="password" name="password" type="password" class="validate black-text">
+                        <input id="password" name="password" type="password" minlength="4"
+                         maxlength="15" pattern="^[a-zA-Z0-9]{4,15}$" class="validate black-text" required>
                         <label for="password">Password</label>
                     </div>
                 </div>

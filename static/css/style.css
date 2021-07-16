@@ -29,3 +29,9 @@ body {
     width:100%;
     background: url("https://www.prestigecatering.com.au/wp-content/uploads/2017/11/18319014_1452416488113288_988962041705753232_o.jpg");
 }
+
+/* Styling the flashes messaging section */
+
+.flashes h4 {
+    line-height: 2;
+}
