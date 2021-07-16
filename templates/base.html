@@ -30,7 +30,7 @@
                 <ul class="right hide-on-med-and-down">
                     <li><a href="{{ url_for('home') }}">Home</a></li>
                     <li><a href="#">About Us</a></li>
-                    <li><a href="#">Your Profile</a></li>
+                    <li><a href="{{ url_for('profile', username=session['user']) }}">Your Profile</a></li>
                     <li><a href="#">Add Recipe</a></li>
                     <li><a href="#">Add Category</a></li>
                     <li><a href="{{ url_for('login') }}">Log In</a></li>
@@ -46,7 +46,7 @@
             <li><h4 class="center-align">Share Plate</h4></li>
             <li><a href="{{ url_for('home') }}">Home</a></li>
             <li><a href="#">About Us</a></li>
-            <li><a href="#">Your Profile</a></li>
+            <li><a href="{{ url_for('profile', username=session['user']) }}">Your Profile</a></li>
             <li><a href="#">Add Recipe</a></li>
             <li><a href="#">Add Category</a></li>
             <li><a href="{{ url_for('login') }}">Log In</a></li>
