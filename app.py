@@ -20,18 +20,31 @@ mongo = PyMongo(app)
 
 @app.route("/")
 def home():
-    return render_template("index.html")  
-
-@app.route("/get_recipes")
-def get_recipes():
-    recipes = mongo.db.recipes.find()
-    return render_template("recipes.html", recipes=recipes)
+    return render_template("index.html")
 
 
 @app.route("/register", methods=["GET", "POST"])
 def register():
-    return render_template("register.html")
+    if request.method == "POST":
+        # check if username already exists in our db
+        existing_user = mongo.db.users.find_one(
+            {"username": request.form.get("username").lower()})
 
+        if existing_user:
+            flash("Username already exists")
+            return redirect(url_for("register"))
+
+        # Dictionary to accept values to allow input into db
+        register = {
+            "username": request.form.get("username").lower(),
+            "password": generate_password_hash(request.form.get("password"))
+        }
+        mongo.db.users.insert_one(register)
+
+        # put the new user into 'session' cookie
+        session["user"] = request.form.get("username").lower()
+        flash("You have Registered Successfully!")
+    return render_template("register.html")
 
 
 if __name__ == "__main__":
