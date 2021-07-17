@@ -35,3 +35,8 @@ body {
 .flashes h4 {
     line-height: 2;
 }
+
+/*
+.card .card-action a:not(.btn):not(.btn-large):not(.btn-small):not(.btn-large):not(.btn-floating) {
+    color: #d81b60 ;
+} */

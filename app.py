@@ -21,6 +21,12 @@ mongo = PyMongo(app)
 @app.route("/")
 def home():
     return render_template("index.html")
+    
+
+@app.route("/recipes")
+def recipes():
+    recipes = mongo.db.recipes.find()
+    return render_template("recipes.html", recipes=recipes) 
 
 
 @app.route("/register", methods=["GET", "POST"])
@@ -63,7 +69,7 @@ def login():
             if check_password_hash(
                 existing_user["password"], request.form.get("password")):
                     session["user"] = request.form.get("username").lower()
-                    flash("Welcome, {}".format(request.form.get("username")))
+                    flash("Welcome {}".format(request.form.get("username")))
                     return redirect(url_for(
                             "profile", username=session["user"]))
             else:
@@ -84,8 +90,19 @@ def profile(username):
     # take the session user username from db
     username = mongo.db.users.find_one(
         {"username": session["user"]})["username"]
-    return render_template("profile.html", username=username)
 
+    if session["user"]:
+        return render_template("profile.html", username=username)
+
+    return redirect(url_for("login")) 
+
+     
+@app.route("/logout")
+def logout():
+    # This function removes users cookies.
+    flash("You have logged out see you soon again.")
+    session.pop("user")
+    return redirect(url_for("home"))
 
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
