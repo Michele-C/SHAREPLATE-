@@ -1,28 +1,42 @@
 {% extends "base.html" %}
 {% block content %}
 
-    {% for recipe in recipes %}
-        {{ recipe.recipe_name }}<br>
-        {{ recipe.category_name }}<br>
-        {{ recipe.ingredients }}<br>
-        {{ recipe.cuisine }}<br>
-        {{ recipe.method }}<br>
-        {{ recipe.tools }}<br>
-    {% endfor %}
-
     <ul class="collapsible">
+        {% for recipe in recipes %}
         <li>
-            <div class="collapsible-header white-text pink darken-3 text-shadow"><i class="fas fa-carrot"></i>First</div>
-            <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
+            <div class="collapsible-header white-text pink darken-3 text-shadow">
+                <i class="fas fa-carrot"></i>
+                <strong>Recipe >  {{ recipe.recipe_name }}</strong>  : {{ recipe.star_rating }} rating  !
+                <i class="far fa-star white-text text-lighten-2 tooltipped"
+                data-position="right" data-tooltip="DELICIOUS!"></i>
+            </div>
+            <div class="collapsible-body">
+                <strong> Category  :  {{ recipe.category_name }}</strong>
+                <p> Ingredients : {{ recipe.ingredients }}</p>
+                <div> Cuisine : {{ recipe.cuisine }} </div>
+                <div> Required tools : {{ recipe.tools }} </div>
+                <hr>
+                <div class="col s12 m7">
+                    <h2 class="header">Scrambled Eggs</h2>
+                    <div class="card horizontal">
+                      <div class="card-image">
+                      <img src="static/img/recipecard.jpg">
+                      </div>
+                      <div class="card-stacked">
+                        <div class="card-content">
+                          <p>Method: <br>
+                            {{ recipe.method }}
+                            </p>
+                        </div>
+                        <div class="card-action">
+                          <a href="#">This is a link</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+            </div>
         </li>
-        <li>
-            <div class="collapsible-header white-text light-blue darken-4 text-shadow"><i class="fas fa-carrot"></i>Second</div>
-            <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
-        </li>
-        <li>
-            <div class="collapsible-header white-text light-blue darken-4 text-shadow"><i class="fas fa-carrot"></i>Third</div>
-            <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
-        </li>
+        {% endfor %}
     </ul>
 
 {% endblock %}   

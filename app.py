@@ -20,13 +20,12 @@ mongo = PyMongo(app)
 
 @app.route("/")
 def home():
-    return render_template("index.html")
-    
+    return render_template("index.html")  
 
 @app.route("/recipes")
 def recipes():
-    recipes = mongo.db.recipes.find()
-    return render_template("recipes.html", recipes=recipes) 
+    recipes = list(mongo.db.recipes.find())
+    return render_template("recipes.html", recipes=recipes)
 
 
 @app.route("/register", methods=["GET", "POST"])
@@ -68,10 +67,10 @@ def login():
             # we are making sure that hashed password matches user input
             if check_password_hash(
                 existing_user["password"], request.form.get("password")):
-                    session["user"] = request.form.get("username").lower()
-                    flash("Welcome {}".format(request.form.get("username")))
-                    return redirect(url_for(
-                            "profile", username=session["user"]))
+                session["user"] = request.form.get("username").lower()
+                flash("Welcome {}".format(request.form.get("username")))
+                return redirect(url_for(
+                        "profile", username=session["user"]))
             else:
                 # incorrect password
                 flash("Incorrect Username and / or Password")
@@ -94,9 +93,9 @@ def profile(username):
     if session["user"]:
         return render_template("profile.html", username=username)
 
-    return redirect(url_for("login")) 
+    return redirect(url_for("login"))
 
-     
+
 @app.route("/logout")
 def logout():
     # This function removes users cookies.
