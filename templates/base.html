@@ -34,7 +34,7 @@
                     {% if session.user %}
                         <li><a href="{{ url_for('recipes') }}">Recipes</a></li>
                         <li><a href="{{ url_for('profile', username=session['user']) }}">Your Profile</a></li>
-                        <li><a href="#">Add Recipe</a></li>
+                        <li><a href="{{ url_for('add_recipes') }}">Add Recipe</a></li>
                         <li><a href="#">Add Category</a></li>
                         <li><a href="{{ url_for('logout') }}">Log Out</a></li>
                     {% else %}
@@ -53,14 +53,14 @@
         <!-- Using session variables to control visibility of nav links.
         Checking that there is a session variable "user"-->    
         {% if session.user %}
-            <li><a href="{{ url_for('recipes') }}">Recipes</a></li>
-            <li><a href="{{ url_for('profile', username=session['user']) }}">Your Profile</a></li>
-            <li><a href="#">Add Recipe</a></li>
+            <li><a href=" {{ url_for('recipes') }}">Recipes</a></li>
+            <li><a href=" {{ url_for('profile', username=session['user']) }}">Your Profile</a></li>
+            <li><a href=" {{url_for('add_recipes') }}">Add Recipe</a></li>
             <li><a href="#">Add Category</a></li>
-            <li><a href="{{ url_for('logout') }}">Log Out</a></li>
+            <li><a href=" {{ url_for('logout') }}">Log Out</a></li>
         {% else %}
-            <li><a href="{{ url_for('login') }}">Log In</a></li>
-            <li><a href="{{ url_for('register') }}">Sign Up</a></li>
+            <li><a href=" {{ url_for('login') }}">Log In</a></li>
+            <li><a href=" {{ url_for('register') }}">Sign Up</a></li>
         {% endif %}
         </ul>
     </header>
