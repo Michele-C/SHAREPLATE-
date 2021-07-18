@@ -15,8 +15,8 @@
                 <strong>Recipe >  {{ recipe.recipe_name }}</strong>  : {{ recipe.star_rating }} rating  !
                 <i class="far fa-star white-text text-lighten-2 tooltipped"
                 data-position="right" data-tooltip="DELICIOUS!"></i>
-                <a href="" class="btn-small blue accent-4 right-align">Done</a>
-                <a href="" class="btn-small dark-grey lighten-1 right-align">Edit</a>
+                <a href="" class="btn-small blue accent-4 right">Done</a>
+                <a href="{{ url_for('edit_recipe', recipe_id=recipe._id) }}" class="btn-small dark-grey lighten-1 right">Edit</a>
                 </div>
             </div>
             <div class="collapsible-body">

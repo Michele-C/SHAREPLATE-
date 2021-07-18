@@ -1,0 +1,90 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h3 class=" text-darken-4 center-align">Edit Recipe</h3>
+
+<div class="row card-panel pink lighten-5">
+    <form class="col s12" method="POST" action="{{ url_for('edit_recipe', recipe_id=recipe._ID) }}">
+        <!--Category selection-->
+        <div class="row">
+            <div class="input-field col s12">
+                <i class="fas fa-utensils prefix pink-text"></i>
+                    <select id="category_name" name="category_name" class="validate" required>
+                        <option value="" disabled selected>Choose a Category:</option>
+                        {% for category in categories %}
+                        <option value="{{ category.category_name }}">{{ category.category_name }}</option>
+                        {% endfor %}
+                    </select>
+                <label for="category_name">Category:</label>
+            </div>
+        </div>
+        <!--Recipe Name-->
+        <div class="row">
+            <div class="input-field col s12">
+                <i class="fas fa-utensils prefix pink-text"></i>
+                <input id="recipe_name" name="recipe_name" minlength="3" maxlength="50"
+                    type="text" class="validate" required>
+                <label for="recipe_name">Recipe Name: </label>
+            </div>
+        </div>
+        <!--Ingredients-->
+        <div class="row">
+            <div class="input-field col s12">
+                <i class="fas fa-utensils prefix pink-text"></i>
+                <input id="ingredients" name="ingredients" minlength="3" maxlength="100"
+                    type="text" class="validate" required>
+                <label for="ingredients">Ingredients:</label>
+            </div>
+        </div>
+        <!--Star Rating dropdown-->
+        <div class="row">
+            <div class="input-field col s12">
+                <i class="fas fa-utensils prefix pink-text"></i>
+                    <select id="star_rating" name="star_rating" class="validate" required>
+                        <option value="" disabled selected>Choose a Star Rating:</option>
+                        {% for star in stars %}
+                        <option value="{{ star.star_rating}}">{{ star.star_rating }}</option>
+                        {% endfor %}
+                    </select>
+                <label for="star_rating">Star Rating:</label>
+            </div>
+        </div>
+        <!--The Cuisine option-->
+        <div class="row">
+            <div class="input-field col s12">
+                <i class="fas fa-utensils prefix pink-text"></i>
+                <input id="cuisine" name="cuisine" minlength="4" maxlength="30"
+                    type="text" class="validate">
+                <label for="cuisine"> Cuisine: </label>
+            </div>
+        </div>
+        <!--the tools option -->
+        <div class="row">
+            <div class="input-field col s12">
+                <i class="fas fa-utensils prefix pink-text"></i>
+                <input id="tools" name="tools" minlength="4" maxlength="30"
+                    type="text" class="validate">
+                <label for="tools"> Tools Required: </label>
+            </div>
+        </div>
+        <!--Method for recipe-->
+        <div class="row">
+            <div class="input-field col s12">
+                <i class="fas fa-utensils prefix pink-text"></i>
+                <textarea id="method" name="method" minlength="5"
+                    maxlength="300" class="materialize-textarea validate" required></textarea>
+                <label for="Method">Method:</label>
+            </div>
+        </div>
+        <!--Submit Button-->
+        <div class="row">
+            <div class="col s12 center-align">
+                <button class="btn waves-effect waves-light pink center" type="submit" name="summit">Edit Recipe 
+                    <i class="fas fa-edit right"></i>
+                </button>
+            </div>
+        </div>
+    </form>
+</div>
+
+{% endblock %}
