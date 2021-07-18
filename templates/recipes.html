@@ -7,10 +7,17 @@
         {% for recipe in recipes %}
         <li>
             <div class="collapsible-header white-text pink darken-3 text-shadow">
+              <!-- matching the buttons from tims lesson-->
+              <div class="col s3">
                 <i class="fas fa-carrot"></i>
+              </div>
+                <div class="col s9">
                 <strong>Recipe >  {{ recipe.recipe_name }}</strong>  : {{ recipe.star_rating }} rating  !
                 <i class="far fa-star white-text text-lighten-2 tooltipped"
                 data-position="right" data-tooltip="DELICIOUS!"></i>
+                <a href="" class="btn-small blue accent-4 right-align">Done</a>
+                <a href="" class="btn-small dark-grey lighten-1 right-align">Edit</a>
+                </div>
             </div>
             <div class="collapsible-body">
                 <strong> Category  :  {{ recipe.category_name }}</strong>
@@ -42,5 +49,4 @@
         </li>
         {% endfor %}
     </ul>
-
 {% endblock %}   

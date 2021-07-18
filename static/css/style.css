@@ -44,3 +44,13 @@ body {
 .card .card-action a:not(.btn):not(.btn-large):not(.btn-small):not(.btn-large):not(.btn-floating) {
     color: #d81b60 ;
 } */
+
+.btn-small {
+    margin-left: 8px;
+}
+
+.collapsible-header .col strong {
+    font-size: 20px;
+    margin: 5px;
+    line-height: 40px;
+}
