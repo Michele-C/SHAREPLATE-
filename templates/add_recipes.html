@@ -8,6 +8,18 @@
         <div class="row">
             <div class="input-field col s12">
                 <i class="fas fa-utensils prefix pink-text"></i>
+                    <select id="category_name" name="category_name" class="validate" required>
+                        <option value="" disabled selected>Choose a Category:</option>
+                        {% for category in categories %}
+                        <option value="{{ category.category_name }}">{{ category.category_name }}</option>
+                        {% endfor %}
+                    </select>
+                <label for="category_name">Category:</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+                <i class="fas fa-utensils prefix pink-text"></i>
                 <input id="recipe_name" name="recipe_name" minlength="3" maxlength="50"
                     type="text" class="validate" required>
                 <label for="recipe_name">Recipe Name: </label>
@@ -19,6 +31,18 @@
                 <input id="ingredients" name="ingredients" minlength="3" maxlength="100"
                     type="text" class="validate" required>
                 <label for="ingredients">Ingredients:</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+                <i class="fas fa-utensils prefix pink-text"></i>
+                    <select id="star_rating" name="star_rating" class="validate" required>
+                        <option value="" disabled selected>Choose a Star Rating:</option>
+                        {% for star in stars %}
+                        <option value="{{ star.star_rating}}">{{ star.star_rating }}</option>
+                        {% endfor %}
+                    </select>
+                <label for="star_rating">Star Rating:</label>
             </div>
         </div>
         <div class="row">
