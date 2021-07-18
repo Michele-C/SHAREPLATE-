@@ -1,6 +1,8 @@
 {% extends "base.html" %}
 {% block content %}
 
+<h3 class="center-align">All Recipes</h3>
+
     <ul class="collapsible">
         {% for recipe in recipes %}
         <li>
@@ -13,11 +15,13 @@
             <div class="collapsible-body">
                 <strong> Category  :  {{ recipe.category_name }}</strong>
                 <p> Ingredients : {{ recipe.ingredients }}</p>
-                <div> Cuisine : {{ recipe.cuisine }} </div>
-                <div> Required tools : {{ recipe.tools }} </div>
+                <p> Cuisine : {{ recipe.cuisine }} </p>
+                <p> Required tools : {{ recipe.tools }} </p>
+                <p> Created By: {{recipe.created_by}}</p>
+
                 <hr>
                 <div class="col s12 m7">
-                    <h2 class="header">Scrambled Eggs</h2>
+                    <h2 class="header">{{recipe.recipe_name}}</h2>
                     <div class="card horizontal">
                       <div class="card-image">
                       <img src="static/img/recipecard.jpg">
