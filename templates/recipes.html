@@ -15,8 +15,10 @@
                 <strong>Recipe >  {{ recipe.recipe_name }}</strong>  : {{ recipe.star_rating }} rating  !
                 <i class="far fa-star white-text text-lighten-2 tooltipped"
                 data-position="right" data-tooltip="DELICIOUS!"></i>
+                {% if session.user|lower == recipe.created_by|lower %}
                 <a href="" class="btn-small blue accent-4 right">Done</a>
                 <a href="{{ url_for('edit_recipe', recipe_id=recipe._id) }}" class="btn-small dark-grey lighten-1 right">Edit</a>
+                {% endif %}
                 </div>
             </div>
             <div class="collapsible-body">
