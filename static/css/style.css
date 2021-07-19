@@ -54,3 +54,11 @@ body {
     margin: 5px;
     line-height: 40px;
 }
+
+.card-image{
+    height: 300px;
+}
+
+.card .card-image .card-title {
+    color: black;
+}

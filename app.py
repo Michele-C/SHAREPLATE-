@@ -161,7 +161,10 @@ def delete_recipe(recipe_id):
     flash("Recipe Successfully Removed")
     return redirect(url_for("recipes"))
 
-
+@app.route("/add_category") 
+def add_category():
+    categories = list(mongo.db.categories.find().sort("category_name", 1))
+    return render_template("categories.html", categories=categories)   
 
 
 if __name__ == "__main__":
