@@ -20,7 +20,8 @@ mongo = PyMongo(app)
 
 @app.route("/")
 def home():
-    return render_template("index.html")  
+    return render_template("index.html")
+
 
 @app.route("/recipes")
 def recipes():
@@ -53,6 +54,7 @@ def register():
         return redirect(url_for("profile", username=session["user"]))
 
     return render_template("register.html")
+
 
 # login view
 @app.route("/login", methods=["GET", "POST"])
@@ -121,14 +123,17 @@ def add_recipes():
         flash("Recipe Successfully Added")
     categories=mongo.db.categories.find().sort("category_name", 1)
     stars=mongo.db.stars.find().sort("star_rating", 1) 
-    return render_template("add_recipes.html", categories=categories, stars=stars) 
+    return render_template(
+        "add_recipes.html", categories=categories, stars=stars) 
 
 
 @app.route("/edit_recipe/<recipe_id>", methods=["GET", "POST"])
 def edit_recipe(recipe_id):
-    recipe = mongo.db.recipes.find_one({"_id":ObjectId(recipe_id)})
+    recipe = mongo.db.recipes.find_one({"_id" : ObjectId(recipe_id)})
     categories = mongo.db.categories.find().sort("category_name", 1)
-    return render_template("edit_recipe.html", recipe=recipe, categories=categories)
+    stars=mongo.db.stars.find().sort("star_rating", 1) 
+    return render_template(
+        "edit_recipe.html", recipe=recipe, categories=categories, stars=stars)
 
 
 if __name__ == "__main__":

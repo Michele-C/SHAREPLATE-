@@ -4,15 +4,19 @@
 <h3 class=" text-darken-4 center-align">Edit Recipe</h3>
 
 <div class="row card-panel pink lighten-5">
-    <form class="col s12" method="POST" action="{{ url_for('edit_recipe', recipe_id=recipe._ID) }}">
+    <form class="col s12" method="POST" action="{{ url_for('edit_recipe', recipe_id=recipe._id) }}">
         <!--Category selection-->
         <div class="row">
             <div class="input-field col s12">
                 <i class="fas fa-utensils prefix pink-text"></i>
                     <select id="category_name" name="category_name" class="validate" required>
-                        <option value="" disabled selected>Choose a Category:</option>
+                        <option value="" disabled>Choose a Category:</option>
                         {% for category in categories %}
-                        <option value="{{ category.category_name }}">{{ category.category_name }}</option>
+                            {% if category.category_name == recipe.category_name %}
+                                <option value="{{ category.category_name }}" selected>{{ category.category_name }}</option>
+                            {% else %}
+                                <option value="{{ category.category_name }}">{{ category.category_name }}</option>
+                            {% endif %}
                         {% endfor %}
                     </select>
                 <label for="category_name">Category:</label>
@@ -23,7 +27,7 @@
             <div class="input-field col s12">
                 <i class="fas fa-utensils prefix pink-text"></i>
                 <input id="recipe_name" name="recipe_name" minlength="3" maxlength="50"
-                    type="text" class="validate" required>
+                    value="{{recipe.recipe_name}}" type="text" class="validate" required>
                 <label for="recipe_name">Recipe Name: </label>
             </div>
         </div>
@@ -31,8 +35,8 @@
         <div class="row">
             <div class="input-field col s12">
                 <i class="fas fa-utensils prefix pink-text"></i>
-                <input id="ingredients" name="ingredients" minlength="3" maxlength="100"
-                    type="text" class="validate" required>
+                <input id="ingredients" name="ingredients" minlength="3" maxlength="100" 
+                    type="text" value="{{recipe.ingredients}}"class="validate" required>
                 <label for="ingredients">Ingredients:</label>
             </div>
         </div>
@@ -41,9 +45,13 @@
             <div class="input-field col s12">
                 <i class="fas fa-utensils prefix pink-text"></i>
                     <select id="star_rating" name="star_rating" class="validate" required>
-                        <option value="" disabled selected>Choose a Star Rating:</option>
+                        <option value="" disabled>Choose a Star Rating:</option>
                         {% for star in stars %}
-                        <option value="{{ star.star_rating}}">{{ star.star_rating }}</option>
+                            {% if star.star_rating == recipe.star_rating %}
+                                <option value="{{ star.star_rating }}" selected>{{ star.star_rating }}</option>
+                            {% else %}
+                                <option value="{{ star.star_rating }}">{{ star.star_rating }}</option>
+                            {% endif %}
                         {% endfor %}
                     </select>
                 <label for="star_rating">Star Rating:</label>
@@ -54,7 +62,7 @@
             <div class="input-field col s12">
                 <i class="fas fa-utensils prefix pink-text"></i>
                 <input id="cuisine" name="cuisine" minlength="4" maxlength="30"
-                    type="text" class="validate">
+                    type="text" value="{{recipe.cuisine}}" class="validate">
                 <label for="cuisine"> Cuisine: </label>
             </div>
         </div>
@@ -63,25 +71,29 @@
             <div class="input-field col s12">
                 <i class="fas fa-utensils prefix pink-text"></i>
                 <input id="tools" name="tools" minlength="4" maxlength="30"
-                    type="text" class="validate">
+                    type="text" value="{{recipe.tools}}"class="validate">
                 <label for="tools"> Tools Required: </label>
             </div>
         </div>
-        <!--Method for recipe-->
+        <!--Method for recipe - note the "-"" sign to remove white space in the textarea input -->
         <div class="row">
             <div class="input-field col s12">
                 <i class="fas fa-utensils prefix pink-text"></i>
                 <textarea id="method" name="method" minlength="5"
-                    maxlength="300" class="materialize-textarea validate" required></textarea>
+                    maxlength="300" class="materialize-textarea validate" required>{{- recipe.method -}}</textarea>
                 <label for="Method">Method:</label>
             </div>
         </div>
         <!--Submit Button-->
         <div class="row">
             <div class="col s12 center-align">
-                <button class="btn waves-effect waves-light pink center" type="submit" name="summit">Edit Recipe 
+                <button class="btn waves-effect waves-light pink center text-shadow" type="submit" name="summit">Edit Recipe 
                     <i class="fas fa-edit right"></i>
                 </button>
+                <!-- cancel button -->
+                <a href="{{ url_for('home') }}" class="btn waves-effect waves-light grey text-shadow">
+                    Cancel <i class="fas fa-times-circle right"></i>
+                </a>
             </div>
         </div>
     </form>
