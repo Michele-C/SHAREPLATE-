@@ -129,7 +129,8 @@ def add_recipes():
 
 @app.route("/edit_recipe/<recipe_id>", methods=["GET", "POST"])
 def edit_recipe(recipe_id):
-    #the post method
+#the post method
+
     if request.method == "POST":
         updated_recipe = {
             "category_name": request.form.get("category_name"),
@@ -152,6 +153,15 @@ def edit_recipe(recipe_id):
     # the get method
     return render_template(
         "edit_recipe.html", recipe=recipe, categories=categories, stars=stars)
+
+
+@app.route("/delete_recipe/<recipe_id>")
+def delete_recipe(recipe_id):
+    mongo.db.recipes.remove({"_id": ObjectId(recipe_id)})
+    flash("Recipe Successfully Removed")
+    return redirect(url_for("recipes"))
+
+
 
 
 if __name__ == "__main__":
