@@ -161,10 +161,28 @@ def delete_recipe(recipe_id):
     flash("Recipe Successfully Removed")
     return redirect(url_for("recipes"))
 
-@app.route("/add_category") 
-def add_category():
+
+@app.route("/list_category") 
+def list_category():
     categories = list(mongo.db.categories.find().sort("category_name", 1))
-    return render_template("categories.html", categories=categories)   
+    return render_template("categories.html", categories=categories)
+
+
+@app.route("/add_category", methods=["GET", "POST"])
+def add_category():
+    if request.method == "POST":
+        #Dictionary to be inserted into db
+        category = {
+            "category_name": request.form.get("category_name")
+        }
+        # db collection that we are putting our variable into
+        mongo.db.categories.insert_one(category)
+        flash("Successfully Added Category")
+        return redirect(url_for("list_category"))
+
+    # get method
+    return render_template("add_category.html")
+
 
 
 if __name__ == "__main__":

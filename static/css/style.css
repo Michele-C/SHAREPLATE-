@@ -58,7 +58,8 @@ body {
 .card-image{
     height: 300px;
 }
+/* Category page */
 
 .card .card-image .card-title {
     color: black;
-}
+    }
