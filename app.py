@@ -186,16 +186,23 @@ def add_category():
 @app.route("/edit_category/<category_id>", methods= ["GET", "POST"])
 def edit_category(category_id):
     if request.method == "POST":
-        updated_category = {
+        update_category = {
             "category_name": request.form.get("category_name")
         }
     # update takes 2 dictionaries 1st: which specific category to update and 2nd: the new info    
-        mongo.db.categories.update({"_id": ObjectId(category_id)}, updated_category)
+        mongo.db.categories.update({"_id": ObjectId(category_id)}, update_category)
         flash("Successfully Updated Category")
         return redirect(url_for("list_category"))
     # Get method
     category = mongo.db.categories.find_one({"_id": ObjectId(category_id)})
     return render_template("edit_category.html", category=category)
+
+
+@app.route("/delete_category/<category_id>") 
+def delete_category(category_id):
+    category = mongo.db.categories.remove({"_id": ObjectId(category_id)})
+    flash("Successfully Removed Category") 
+    return redirect(url_for("list_category"))
 
 
 
