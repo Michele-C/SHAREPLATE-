@@ -171,7 +171,7 @@ def list_category():
 @app.route("/add_category", methods=["GET", "POST"])
 def add_category():
     if request.method == "POST":
-        #Dictionary to be inserted into db
+        #  Dictionary to be inserted into db
         category = {
             "category_name": request.form.get("category_name")
         }
@@ -182,6 +182,13 @@ def add_category():
 
     # get method
     return render_template("add_category.html")
+
+@app.route("/edit_category/<category_id>", methods= ["GET", "POST"])
+def edit_category(category_id):
+    # Get method
+    category = mongo.db.categories.find_one({"_id": ObjectId(category_id)})
+    return render_template("edit_category.html", category=category)
+
 
 
 

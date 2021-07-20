@@ -63,3 +63,9 @@ body {
 .card .card-image .card-title {
     color: black;
     }
+
+/* pink edit category button style */
+button, input, optgroup, select, textarea {
+    font-family: cursive;
+    font-size: 14px;
+}
