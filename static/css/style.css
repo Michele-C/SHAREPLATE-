@@ -22,7 +22,16 @@ nav ul a {
 
 body {
     font-family:cursive;
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
 }
+
+/* Sticky Footer from materialise */
+
+  main {
+    flex: 1 0 auto;
+  }
 
 #hero-image {
     height: 600px;
@@ -56,7 +65,7 @@ body {
 }
 
 .card-image{
-    height: 300px;
+    height: 325px;
 }
 /* Category page */
 
@@ -69,4 +78,15 @@ body {
 button, input, optgroup, select, textarea {
     font-family: cursive;
     font-size: 14px;
+}
+
+
+.input-field>label {
+    color: black;
+    padding-left: 15px;
+}
+
+
+h3 .center-align .profile-name {
+    text-transform: capitalize;
 }

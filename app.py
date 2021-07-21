@@ -28,6 +28,13 @@ def recipes():
     recipes = list(mongo.db.recipes.find())
     return render_template("recipes.html", recipes=recipes)
 
+@app.route("/search", methods=["GET", "POST"])
+def search():
+    query = request.form.get("query")
+    recipes = list(mongo.db.recipes.find({"$text": {"$search": query}}))
+    return render_template("recipes.html", recipes=recipes)
+
+
 
 @app.route("/register", methods=["GET", "POST"])
 def register():
@@ -70,7 +77,7 @@ def login():
             if check_password_hash(
                 existing_user["password"], request.form.get("password")):
                 session["user"] = request.form.get("username").lower()
-                flash("Welcome {}".format(request.form.get("username")))
+                flash("Welcome {}".format(request.form.get("username").capitalize()))
                 return redirect(url_for(
                         "profile", username=session["user"]))
             else:
@@ -91,16 +98,17 @@ def profile(username):
     # take the session user username from db
     username = mongo.db.users.find_one(
         {"username": session["user"]})["username"]
+    recipes = list(mongo.db.recipes.find())    
 
     if session["user"]:
-        return render_template("profile.html", username=username)
-
-    return redirect(url_for("login"))
+        return render_template("profile.html", username=username, recipes=recipes)
+    
+    return redirect(url_for("/home"))
 
 
 @app.route("/logout")
 def logout():
-    # This function removes users cookies.
+    # This function removes users session cookies.
     flash("You have logged out see you soon again.")
     session.pop("user")
     return redirect(url_for("home"))
@@ -129,7 +137,7 @@ def add_recipes():
 
 @app.route("/edit_recipe/<recipe_id>", methods=["GET", "POST"])
 def edit_recipe(recipe_id):
-#the post method
+# the post method
 
     if request.method == "POST":
         updated_recipe = {

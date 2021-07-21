@@ -3,6 +3,26 @@
 
 <h3 class="center-align">All Recipes</h3>
 
+<!-- Form to search for a particular recipe-->
+
+<div class=" row  grey lighten-3">
+  <form action="{{url_for('search')}}" method="post" class="col s12">
+        <div class="row valign-wrapper center-align">
+          <div class="input-field col s12 m8">
+            <i class="fas fa-search prefix white"></i>
+            <input type="text" name="query" id="query" class="validate black-text" minlength="3" required >
+            <label for="query" class="label-place"> Search Recipes </label>
+          </div>
+          <div class="col s12 4m">
+            <a href="{{ url_for('recipes') }}" class="btn-small black accent-4 center-align">Reset</a>
+            <button type="submit" class="btn-small pink accent-4 center-align">Search</button>
+          </div>
+        </div>
+     </form>
+</div>
+
+
+    {% if recipes|length>0 %}
     <ul class="collapsible">
         {% for recipe in recipes %}
         <li>
@@ -41,9 +61,6 @@
                             {{ recipe.method }}
                             </p>
                         </div>
-                        <div class="card-action">
-                          <a href="#">This is a link</a>
-                        </div>
                       </div>
                     </div>
                   </div>
@@ -51,4 +68,7 @@
         </li>
         {% endfor %}
     </ul>
+    {%else%}
+      <h3 class="center-align red-text">No Results Found!</h3>
+    {%endif%}
 {% endblock %}   
