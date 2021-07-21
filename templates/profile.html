@@ -19,38 +19,40 @@
         </div>
     </div>
 
-    <!-- {% if recipes|length>0 %} -->
+  
     <ul class="collapsible">
+
         {% for recipe in recipes %}
+        {% if session.user|lower == recipe.created_by|lower %}
         <li>
             <div class="collapsible-header white-text pink darken-3 text-shadow">
               <!-- matching the buttons from tims lesson-->
-              <div class="col s3">
-                <i class="fas fa-carrot"></i>
-              </div>
-                <div class="col s9">
-                <strong>Recipe >  {{ recipe.recipe_name }}</strong>  : {{ recipe.star_rating }} rating  !
-                <i class="far fa-star white-text text-lighten-2 tooltipped"
-                data-position="right" data-tooltip="DELICIOUS!"></i>
-                {% if session.user|lower == recipe.created_by|lower %}
-                <a href="{{ url_for('delete_recipe', recipe_id=recipe._id) }}" class="btn-small blue accent-4 right">Delete</a>
-                <a href="{{ url_for('edit_recipe', recipe_id=recipe._id) }}" class="btn-small dark-grey lighten-1 right">Edit</a>
-                {% endif %}
+                <div class="col s3">
+                    <i class="fas fa-carrot"></i>
                 </div>
-            </div>
-            <div class="collapsible-body">
-                <strong> Category  :  {{ recipe.category_name }}</strong>
-                <p> Ingredients : {{ recipe.ingredients }}</p>
-                <p> Cuisine : {{ recipe.cuisine }} </p>
-                <p> Required tools : {{ recipe.tools }} </p>
-                <p> Created By: {{recipe.created_by}}</p>
-
+                    <div class="col s9">
+                        <strong>Recipe >  {{ recipe.recipe_name }}</strong>  : {{ recipe.star_rating }} rating  !
+                            <i class="far fa-star white-text text-lighten-2 tooltipped"
+                                data-position="right" data-tooltip="DELICIOUS!"></i>
+                            {% if session.user|lower == recipe.created_by|lower %}
+                                <a href="{{ url_for('delete_recipe', recipe_id=recipe._id) }}" class="btn-small blue accent-4 right">Delete</a>
+                                <a href="{{ url_for('edit_recipe', recipe_id=recipe._id) }}" class="btn-small dark-grey lighten-1 right">Edit</a>
+                            {% endif %}
+                    </div>
+                </div>
+            
+                <div class="collapsible-body">
+                    <strong> Category  :  {{ recipe.category_name }}</strong>
+                        <p> Ingredients : {{ recipe.ingredients }}</p>
+                        <p> Cuisine : {{ recipe.cuisine }} </p>
+                        <p> Required tools : {{ recipe.tools }} </p>
+                        <p> Created By: {{recipe.created_by}}</p>
                 <hr>
                 <div class="col s12 m7">
                     <h2 class="header">{{recipe.recipe_name}}</h2>
-                    <div class="card horizontal">
-                      <div class="card-image">
-                      <img src="static/img/recipecard.jpg">
+                        <div class="card horizontal">
+                        <div class="card-image">
+                        <img src="../static/img/recipecard.jpg">
                       </div>
                       <div class="card-stacked">
                         <div class="card-content">
@@ -63,13 +65,8 @@
                   </div>
             </div>
         </li>
+        {% endif %}
         {% endfor %}
     </ul>
-   <!-- {%else%}
-      <h3 class="center-align red-text">No Results Found!</h3>
-    {%endif%}
-
-   -->       
-  
 
 {% endblock %}
