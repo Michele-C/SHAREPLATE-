@@ -101,8 +101,7 @@ def profile(username):
     recipes = list(mongo.db.recipes.find())    
 
     if session["user"]:
-        return render_template("profile.html", username=username, recipes=recipes)
-    
+        return render_template("profile.html", username=username, recipes=recipes) 
     return redirect(url_for("/home"))
 
 
@@ -172,7 +171,7 @@ def delete_recipe(recipe_id):
 
 @app.route("/list_category") 
 def list_category():
-    categories = list(mongo.db.categories.find().sort("category_name", 1))
+    categories = list(mongo.db.categories.find().sort("category_name", 1 ))
     return render_template("categories.html", categories=categories)
 
 
