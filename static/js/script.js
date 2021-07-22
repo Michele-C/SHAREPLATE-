@@ -10,7 +10,7 @@ $(document).ready(function(){
     $("select").formSelect();
   
   /* 
-  Robbed all the following code from TIM in CI - sorry! */
+  Robbed all the following code from TIM in CI to fix materialize's problem with dealing with select/option tags */
   
 
   validateMaterializeSelect();

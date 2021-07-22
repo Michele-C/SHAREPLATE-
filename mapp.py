@@ -28,12 +28,12 @@ def recipes():
     recipes = list(mongo.db.recipes.find())
     return render_template("recipes.html", recipes=recipes)
 
-
 @app.route("/search", methods=["GET", "POST"])
 def search():
     query = request.form.get("query")
     recipes = list(mongo.db.recipes.find({"$text": {"$search": query}}))
     return render_template("recipes.html", recipes=recipes)
+
 
 
 @app.route("/register", methods=["GET", "POST"])
@@ -75,12 +75,11 @@ def login():
         if existing_user:
             # we are making sure that hashed password matches user input
             if check_password_hash(
-                    existing_user["password"], request.form.get("password")):
+                existing_user["password"], request.form.get("password")):
                 session["user"] = request.form.get("username").lower()
-                flash("Welcome {}".format(
-                   request.form.get("username").capitalize()))
+                flash("Welcome {}".format(request.form.get("username").capitalize()))
                 return redirect(url_for(
-                   "profile", username=session["user"]))
+                        "profile", username=session["user"]))
             else:
                 # incorrect password
                 flash("Incorrect Username and / or Password")
@@ -99,11 +98,10 @@ def profile(username):
     # take the session user username from db
     username = mongo.db.users.find_one(
         {"username": session["user"]})["username"]
-    recipes = list(mongo.db.recipes.find())
+    recipes = list(mongo.db.recipes.find())    
 
     if session["user"]:
-        return render_template(
-            "profile.html", username=username, recipes=recipes)
+        return render_template("profile.html", username=username, recipes=recipes) 
     return redirect(url_for("/home"))
 
 
@@ -130,15 +128,15 @@ def add_recipes():
         }
         mongo.db.recipes.insert_one(recipe)
         flash("Recipe Successfully Added")
-    categories = mongo.db.categories.find().sort("category_name", 1)
-    stars = mongo.db.stars.find().sort("star_rating", 1)
+    categories=mongo.db.categories.find().sort("category_name", 1)
+    stars=mongo.db.stars.find().sort("star_rating", 1) 
     return render_template(
-        "add_recipes.html", categories=categories, stars=stars)
+        "add_recipes.html", categories=categories, stars=stars) 
 
 
 @app.route("/edit_recipe/<recipe_id>", methods=["GET", "POST"])
 def edit_recipe(recipe_id):
-    # the post method
+# the post method
 
     if request.method == "POST":
         updated_recipe = {
@@ -155,10 +153,10 @@ def edit_recipe(recipe_id):
         mongo.db.recipes.update({"_id": ObjectId(recipe_id)}, updated_recipe)
         flash("Recipe Successfully Updated")
 
-    # defining variables
-    recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
+    # defining variables 
+    recipe = mongo.db.recipes.find_one({"_id" : ObjectId(recipe_id)})
     categories = mongo.db.categories.find().sort("category_name", 1)
-    stars = mongo.db.stars.find().sort("star_rating", 1)
+    stars = mongo.db.stars.find().sort("star_rating", 1) 
     # the get method
     return render_template(
         "edit_recipe.html", recipe=recipe, categories=categories, stars=stars)
@@ -171,61 +169,49 @@ def delete_recipe(recipe_id):
     return redirect(url_for("recipes"))
 
 
-@app.route("/list_category")
+@app.route("/list_category") 
 def list_category():
-    categories = list(mongo.db.categories.find().sort("category_name", 1))
+    categories = list(mongo.db.categories.find().sort("category_name", 1 ))
     return render_template("categories.html", categories=categories)
 
 
-# ADD NEW CATEGORY TO DB
 @app.route("/add_category", methods=["GET", "POST"])
 def add_category():
     if request.method == "POST":
-        # Check if category already exists in the db
-        existing_category = mongo.db.categories.find_one(
-            {"category_name": request.form.get("category_name").lower()})
-        if existing_category:
-            flash("This category already exists")
-            return redirect(url_for("list_category"))
-        else:
-            #  Dictionary to be inserted into db
-            category = {
-                "category_name": request.form.get("category_name").lower()
-            }
-            # db collection that we are putting our variable into
-            mongo.db.categories.insert_one(category)
-            flash("Successfully Added Category")
-            return redirect(url_for("list_category"))
+        #  Dictionary to be inserted into db
+        category = {
+            "category_name": request.form.get("category_name")
+        }
+        # db collection that we are putting our variable into
+        mongo.db.categories.insert_one(category)
+        flash("Successfully Added Category")
+        return redirect(url_for("list_category"))
+
     # get method
     return render_template("add_category.html")
 
-# EDIT CATEGORIES
-
-
-@app.route("/edit_category/<category_id>", methods=["GET", "POST"])
+@app.route("/edit_category/<category_id>", methods= ["GET", "POST"])
 def edit_category(category_id):
     if request.method == "POST":
         update_category = {
             "category_name": request.form.get("category_name")
         }
-    # update takes 2 dictionaries 1st specifics category to update
-    # 2nd: the new information to include
-        mongo.db.categories.update(
-            {"_id": ObjectId(category_id)}, update_category)
+    # update takes 2 dictionaries 1st: which specific category to update and 2nd: the new info    
+        mongo.db.categories.update({"_id": ObjectId(category_id)}, update_category)
         flash("Successfully Updated Category")
         return redirect(url_for("list_category"))
     # Get method
     category = mongo.db.categories.find_one({"_id": ObjectId(category_id)})
     return render_template("edit_category.html", category=category)
 
-# DELETE CATEGORY FUNCTION
 
-
-@app.route("/delete_category/<category_id>")
+@app.route("/delete_category/<category_id>") 
 def delete_category(category_id):
     category = mongo.db.categories.remove({"_id": ObjectId(category_id)})
-    flash("Successfully Removed Category")
+    flash("Successfully Removed Category") 
     return redirect(url_for("list_category"))
+
+
 
 
 if __name__ == "__main__":

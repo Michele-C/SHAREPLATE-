@@ -9,13 +9,15 @@ nav .brand-logo{
     font-family:cursive;
     font-size:xx-large;
 }
+
 nav ul a {
     color:white;
     font-family:cursive;
     font-size: medium;
 }
+
 .text-shadow {
-    text-shadow: 2px 2px 2px rgba(5, 5, 5, 0.7);
+    text-shadow: 2px 2px 2px rgba(5, 5, 5, 0.6);
 }
 
 body {
@@ -31,6 +33,8 @@ body {
     flex: 1 0 auto;
   }
 
+/* Images for home page and profile page */
+
 #hero-image {
     height: 600px;
     width:100%;
@@ -43,6 +47,8 @@ body {
         background: url("../img/hero2.jpg") no-repeat center center;
     }
 
+/* making space from the left side of screen for Share Plate */
+
 .brand-logo{
     margin-left: 15px;
 }
@@ -53,11 +59,9 @@ body {
     line-height: 2;
 }
 
-
 .fa-star {
     margin-left: 5px;
 }
-
 
 .btn-small {
     margin-left: 8px;
@@ -69,6 +73,7 @@ body {
     line-height: 40px;
 }
 
+/* image for categories */
 .card-image{
     height: 325px;
 }
@@ -98,7 +103,6 @@ button, input, optgroup, select, textarea {
     color: black;
     padding-left: 15px;
 }
-
 
 h3 .center-align .profile-name {
     text-transform: capitalize;
