@@ -36,8 +36,8 @@
                 <i class="far fa-star white-text text-lighten-2 tooltipped"
                 data-position="right" data-tooltip="DELICIOUS!"></i>
                 {% if session.user|lower == recipe.created_by|lower %}
-                <a href="{{ url_for('delete_recipe', recipe_id=recipe._id) }}" class="btn-small  cyan accent-4 black-text right">Delete</a>
-                <a href="{{ url_for('edit_recipe', recipe_id=recipe._id) }}" class="btn-small blue-grey lighten-2 black-text right">Edit</a>
+                <a href="{{ url_for('delete_recipe', recipe_id=recipe._id) }}" class="btn-small black accent-4 white-text right">Delete</a>
+                <a href="{{ url_for('edit_recipe', recipe_id=recipe._id) }}" class="btn-small pink lighten-4 black-text right">Edit</a>
                 {% endif %}
                 </div>
             </div>

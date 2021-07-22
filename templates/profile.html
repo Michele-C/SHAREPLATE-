@@ -3,29 +3,31 @@
 <div id="hero2-image" class="m12">
     <div class="row">
         <div class="col s12 m8 offset-m2">
-            <div class="card-panel cyan accent-1">
-                <h3 class="profile-name center-align text-darken-4 text-shadow">
+          <div class="card blue-grey darken-2">
+            <div class="card-content white-text">
+                <h3 class="profile-name center-align text-shadow">
                     <i class="fas fa-door-open"></i>
                    Welcome {{ username|capitalize }}
                 </h3>
-           </div>
-        </div>   
-    </div>
-    <div class="row s12">
-        <p class="center align profile-para"> On your profile page you can see which recipes you contributed to SharePlate.<br>
-            You can edit and update the recipes you have already submitted. Finally, you can delete the recipes that you<br> don't wish to share anymore
-            with a click of a button.<br> It's that easy!
-        </p>
+              <p class="center align profile-para"> On your profile page you can see which recipes you contributed to SharePlate.
+                You can edit and update the recipes you have already submitted. Finally, you can delete the recipes that you don't wish to share anymore
+                with a click of a button. It's that easy!
+              </p>
+            </div>
+          </div>
         </div>
+      </div>
+
     <div class="row">
-        <div class="col s12 m6 offset-m3 amber lighten-3">
+        <div class="col s12 m6 offset-m3 blue-grey lighten-5">
             <h3 class="center-align text-darken-4">
                 {{ username|capitalize }}'s Recipes
             </h3>
         </div>
     </div>
 
-  
+<!-- Listing the recipes that belongs to logged in user -->
+
     <ul class="collapsible">
 
         {% for recipe in recipes %}
@@ -36,24 +38,24 @@
                 <div class="col s3">
                     <i class="fas fa-carrot"></i>
                 </div>
-                    <div class="col s9">
+                    <div class="col s9 ">
                         <strong>Recipe >  {{ recipe.recipe_name }}</strong>  : {{ recipe.star_rating }} rating  !
                             <i class="far fa-star white-text text-lighten-2 tooltipped"
                                 data-position="right" data-tooltip="DELICIOUS!"></i>
                             {% if session.user|lower == recipe.created_by|lower %}
-                                <a href="{{ url_for('delete_recipe', recipe_id=recipe._id) }}" class="btn-small  cyan accent-4 white-text right">Delete</a>
-                                <a href="{{ url_for('edit_recipe', recipe_id=recipe._id) }}" class="btn-small blue-grey darken-2 white-text  right">Edit</a>
+                                <a href="{{ url_for('delete_recipe', recipe_id=recipe._id) }}" class="btn-small black white-text right">Delete</a>
+                                <a href="{{ url_for('edit_recipe', recipe_id=recipe._id) }}" class="btn-small  pink lighten-4 black-text  right">Edit</a>
                             {% endif %}
                     </div>
                 </div>
             
-                <div class="collapsible-body">
+                <div class="collapsible-body white">
                     <strong> Category  :  {{ recipe.category_name }}</strong>
                         <p> Ingredients : {{ recipe.ingredients }}</p>
                         <p> Cuisine : {{ recipe.cuisine }} </p>
                         <p> Required tools : {{ recipe.tools }} </p>
                         <p> Created By: {{recipe.created_by}}</p>
-                <hr>
+                    <hr>
                 <div class="col s12 m7">
                     <h2 class="header">{{recipe.recipe_name}}</h2>
                         <div class="card horizontal">

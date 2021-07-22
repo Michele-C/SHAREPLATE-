@@ -1,5 +1,3 @@
-/*@import url('https://fonts.googleapis.com/css?family=Oswald|Lato:300');*/
-
 *{
     margin:0;
     padding:0;
@@ -59,10 +57,7 @@ body {
 .fa-star {
     margin-left: 5px;
 }
-/*
-.card .card-action a:not(.btn):not(.btn-large):not(.btn-small):not(.btn-large):not(.btn-floating) {
-    color: #d81b60 ;
-} */
+
 
 .btn-small {
     margin-left: 8px;
@@ -88,6 +83,14 @@ body {
 button, input, optgroup, select, textarea {
     font-family: cursive;
     font-size: 14px;
+}
+
+/* styling button on login home page from orange to pink */
+
+.card .card-action a:not(.btn):not(.btn-large):not(.btn-small):not(.btn-large):not(.btn-floating){
+    color:hotpink;
+    font-size: larger;
+    border-color: white;
 }
 
 
