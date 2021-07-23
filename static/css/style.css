@@ -103,11 +103,9 @@ button, input, optgroup, select, textarea {
     font-size: 14px;
 }
 
-textarea {
-    max-width:95%;
+textarea #method {
+    max-width: 90%;
 }
-
-
 
 /* styling button on login home page from orange to pink */
 
@@ -145,29 +143,21 @@ footer {
 }
 
 
-/* for very small devices */
+/*  ---------------------------- for very small devices */
 
 @media screen and (max-width: 500px){
 
-    /* fixing input field line problem on smaller screens */
+/* fixing input field line problem on smaller screens */
 div .input-field #query  { 
     height: 60px;
     margin-right: 10px;
 }
 
+/* fixing logo problem on smaller screens*/
 nav .brand-logo {
-    background-color: red;
     font-size: 20px;
 }
- 
-    #logo {
-        text-align: center;
-        font-size: 200%;
-        padding: 0;
-        margin: 0;
-    }
-    
-    #menu li {
-        float: left;
-        text-align: right;
-    }
+a>div .col #delete {
+    background-color: red;
+}
+}
