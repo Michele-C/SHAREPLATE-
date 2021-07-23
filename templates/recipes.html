@@ -8,7 +8,7 @@
 <div class=" row  grey lighten-3">
   <form action="{{url_for('search')}}" method="post" class="col s12">
     <div class="row valign-wrapper center-align">
-      <div class="input-field col s12 m8">
+      <div class="input-field search col s12 m8">
         <i class="fas fa-search prefix white"></i>
         <input type="text" name="query" id="query" class="validate black-text" minlength="3" required>
         <label for="query" class="label-place"> Search Recipes </label>
@@ -29,11 +29,11 @@
     <div class="collapsible-header white-text pink darken-3 text-shadow">
       <!-- matching the buttons from tims lesson-->
       <div class="col s3">
-        <i class="fas fa-carrot tooltipped" data-position="right" data-tooltip="Click me for dropdown!"></i>
+        <i class="fas fa-carrot tooltipped" data-position="right" data-tooltip="Click me for full recipe!"></i>
       </div>
       <div class="col s9">
         <strong>Recipe > {{ recipe.recipe_name }}</strong> : {{ recipe.star_rating }} rating !
-        <i class="far fa-star white-text text-lighten-2 tooltipped" data-position="right" data-tooltip="YUM!"></i>
+        <i class="far fa-star white-text text-lighten-2 tooltipped" data-position="right" data-tooltip="Yum!"></i>
         {% if session.user|lower == recipe.created_by|lower %}
         <a href="{{ url_for('delete_recipe', recipe_id=recipe._id) }}"
           class="btn-small black accent-4 white-text right">Delete</a>

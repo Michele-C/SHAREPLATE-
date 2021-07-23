@@ -103,6 +103,12 @@ button, input, optgroup, select, textarea {
     font-size: 14px;
 }
 
+textarea {
+    max-width:95%;
+}
+
+
+
 /* styling button on login home page from orange to pink */
 
 .card .card-action a:not(.btn):not(.btn-large):not(.btn-small):not(.btn-large):not(.btn-floating){
@@ -137,3 +143,31 @@ h3 .center-align .profile-name {
 footer {
     height: 75px;
 }
+
+
+/* for very small devices */
+
+@media screen and (max-width: 500px){
+
+    /* fixing input field line problem on smaller screens */
+div .input-field #query  { 
+    height: 60px;
+    margin-right: 10px;
+}
+
+nav .brand-logo {
+    background-color: red;
+    font-size: 20px;
+}
+ 
+    #logo {
+        text-align: center;
+        font-size: 200%;
+        padding: 0;
+        margin: 0;
+    }
+    
+    #menu li {
+        float: left;
+        text-align: right;
+    }
