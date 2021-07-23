@@ -183,15 +183,14 @@ def add_category():
     if request.method == "POST":
         # Check if category already exists in the db
         existing_category = mongo.db.categories.find_one(
-            {"category_name": request.form.get("category_name").lower()})
+            {"category_name": request.form.get("category_name")})
         if existing_category:
             flash("This category already exists")
             return redirect(url_for("list_category"))
         else:
             #  Dictionary to be inserted into db
             category = {
-                "category_name": request.form.get("category_name").lower()
-            }
+                "category_name": request.form.get("category_name")            }
             # db collection that we are putting our variable into
             mongo.db.categories.insert_one(category)
             flash("Successfully Added Category")

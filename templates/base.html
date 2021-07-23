@@ -51,24 +51,24 @@
 
         <!-- For Mobile side nav bar-->
 
-        <ul class="sidenav pink lighten-3" id="mobile-demo">
+        <ul class="sidenav pink darken-3 white-text" id="mobile-demo">
             <li>
                 <h4 class="center-align">Share Plate</h4>
             </li>
-            <li><a href="{{ url_for('home') }}">Home</a></li>
+            <li><a class="white-text" href="{{ url_for('home') }}">Home</a></li>
             <!-- Using session variables to control visibility of nav links.
             Checking that there is a session variable "user"-->
             {% if session.user %}
-            <li><a href=" {{ url_for('recipes') }}">All Recipes</a></li>
-            <li><a href=" {{ url_for('profile', username=session['user']) }}">Your Profile</a></li>
-            <li><a href=" {{url_for('add_recipes') }}">Add Recipe</a></li>
+            <li ><a class="white-text" href=" {{ url_for('recipes') }}">All Recipes</a></li>
+            <li><a class="white-text" href=" {{ url_for('profile', username=session['user']) }}">Your Profile</a></li>
+            <li><a class="white-text" href=" {{url_for('add_recipes') }}">Add Recipe</a></li>
             {% if session.user|lower == "admin"|lower %}
-            <li><a href="{{ url_for('list_category') }}">Add Category</a></li>
+            <li><a class="white-text" href="{{ url_for('list_category') }}">Add Category</a></li>
             {% endif %}
-            <li><a href=" {{ url_for('logout') }}">Log Out</a></li>
+            <li><a class="white-text" href=" {{ url_for('logout') }}">Log Out</a></li>
             {% else %}
-            <li><a href=" {{ url_for('login') }}">Log In</a></li>
-            <li><a href=" {{ url_for('register') }}">Sign Up</a></li>
+            <li><a class="white-text" href=" {{ url_for('login') }}">Log In</a></li>
+            <li><a class="white-text" href=" {{ url_for('register') }}">Sign Up</a></li>
             {% endif %}
         </ul>
     </header>
@@ -96,6 +96,7 @@
     <!-- Social media footer section using sticky styling from materialize-->
 
     <footer class="center-align">
+      
         <ul class="social">
             <li><a href="https://www.facebook.com" target="_blank"><i class="fab fa-facebook"> </i></a></li>
             <li><a href="https://www.twitter.com" target="_blank"><i class="fab fa-twitter-square"> </i></a></li>
