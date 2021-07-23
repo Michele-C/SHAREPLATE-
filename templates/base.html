@@ -73,9 +73,9 @@
         </ul>
     </header>
 
-    <section>
+    <div>
         <!-- This section is for our flash messages when an update, create or delete was successful or not -->
-
+        
         {% with messages = get_flashed_messages() %}
         {% if messages %}
         {% for message in messages %}
@@ -85,7 +85,7 @@
         {% endfor %}
         {% endif %}
         {% endwith %}
-    </section>
+    </div>
 
     <!-- This is the main block where all the other html files put their content-->
     <main class="container">
@@ -97,10 +97,10 @@
 
     <footer class="center-align">
         <ul class="social">
-            <li><a href="https://www.facebook.com" target="_blank"><i class="fab fa-facebook"> </i></li>
-            <li><a href="https://www.twitter.com" target="_blank"><i class="fab fa-twitter-square"> </i></li>
-            <li><a href="https://www.youtube.com" target="_blank"><i class="fab fa-youtube-square"> </i></li>
-            <li><a href="https://www.instagram.com" target="_blank"><i class="fab fa-instagram"> </i></li>
+            <li><a href="https://www.facebook.com" target="_blank"><i class="fab fa-facebook"> </i></a></li>
+            <li><a href="https://www.twitter.com" target="_blank"><i class="fab fa-twitter-square"> </i></a></li>
+            <li><a href="https://www.youtube.com" target="_blank"><i class="fab fa-youtube-square"> </i></a></li>
+            <li><a href="https://www.instagram.com" target="_blank"><i class="fab fa-instagram"> </i></a></li>
         </ul>
     </footer>
 
@@ -110,7 +110,7 @@
     <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script src="{{ url_for('static', filename='js/script.js') }}"></script>
-    
+
     {% block scripts %}
     {% endblock %}
 

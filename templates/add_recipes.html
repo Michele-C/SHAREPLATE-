@@ -9,12 +9,12 @@
         <div class="row">
             <div class="input-field col s12">
                 <i class="fas fa-utensils prefix pink-text"></i>
-                    <select id="category_name" name="category_name" class="validate" required>
-                        <option value="" disabled selected>Choose a Category:</option>
-                        {% for category in categories %}
-                        <option value="{{ category.category_name }}">{{ category.category_name }}</option>
-                        {% endfor %}
-                    </select>
+                <select id="category_name" name="category_name" class="validate" required>
+                    <option value="" disabled selected>Choose a Category:</option>
+                    {% for category in categories %}
+                    <option value="{{ category.category_name }}">{{ category.category_name }}</option>
+                    {% endfor %}
+                </select>
                 <label for="category_name">Category:</label>
             </div>
         </div>
@@ -22,8 +22,8 @@
         <div class="row">
             <div class="input-field col s12">
                 <i class="fas fa-utensils prefix pink-text"></i>
-                <input id="recipe_name" name="recipe_name" minlength="3" maxlength="50"
-                    type="text" class="validate" required>
+                <input id="recipe_name" name="recipe_name" minlength="3" maxlength="50" type="text" class="validate"
+                    required>
                 <label for="recipe_name">Recipe Name: </label>
             </div>
         </div>
@@ -31,17 +31,17 @@
         <div class="row">
             <div class="input-field col s12">
                 <i class="fas fa-utensils prefix pink-text"></i>
-                <input id="ingredients" name="ingredients" minlength="3" maxlength="200"
-                    type="text" class="validate" required>
+                <input id="ingredients" name="ingredients" minlength="3" maxlength="200" type="text" class="validate"
+                    required>
                 <label for="ingredients">Ingredients:</label>
             </div>
         </div>
-          <!--Method for recipe-->
-          <div class="row">
+        <!--Method for recipe-->
+        <div class="row">
             <div class="input-field col s12">
                 <i class="fas fa-utensils prefix pink-text"></i>
-                <textarea id="method" name="method" minlength="5" maxlength="3000"
-                class="materialize-textarea" required></textarea>
+                <textarea id="method" name="method" minlength="5" maxlength="3000" class="materialize-textarea"
+                    required></textarea>
                 <label for="method">Method:</label>
             </div>
         </div>
@@ -49,12 +49,12 @@
         <div class="row">
             <div class="input-field col s12">
                 <i class="fas fa-utensils prefix pink-text"></i>
-                    <select id="star_rating" name="star_rating" class="validate" required>
-                        <option value="" disabled selected>Choose a Star Rating:</option>
-                        {% for star in stars %}
-                        <option value="{{ star.star_rating}}">{{ star.star_rating }}</option>
-                        {% endfor %}
-                    </select>
+                <select id="star_rating" name="star_rating" class="validate" required>
+                    <option value="" disabled selected>Choose a Star Rating:</option>
+                    {% for star in stars %}
+                    <option value="{{ star.star_rating}}">{{ star.star_rating }}</option>
+                    {% endfor %}
+                </select>
                 <label for="star_rating">Star Rating:</label>
             </div>
         </div>
@@ -62,8 +62,7 @@
         <div class="row">
             <div class="input-field col s12">
                 <i class="fas fa-utensils prefix pink-text"></i>
-                <input id="cuisine" name="cuisine" minlength="4" maxlength="30"
-                    type="text" class="validate">
+                <input id="cuisine" name="cuisine" minlength="4" maxlength="30" type="text" class="validate">
                 <label for="cuisine"> Cuisine: </label>
             </div>
         </div>
@@ -71,12 +70,11 @@
         <div class="row">
             <div class="input-field col s12">
                 <i class="fas fa-utensils prefix pink-text"></i>
-                <input id="tools" name="tools" minlength="4" maxlength="30"
-                    type="text" class="validate">
+                <input id="tools" name="tools" minlength="4" maxlength="30" type="text" class="validate">
                 <label for="tools"> Tools Required: </label>
             </div>
         </div>
-      
+
         <!--Submit & cancel Button-->
         <div class="row">
             <div class="col s12 center-align">

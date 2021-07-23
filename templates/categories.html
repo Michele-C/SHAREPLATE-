@@ -1,6 +1,9 @@
 {% extends "base.html" %}
 {% block content %}
 
+<!-- This is a basic card that renders a menu board pic and the name of the category.
+It has a delete and edit button-->
+
 <h3 class="center-align">All Categories</h3>
 <br>
 
@@ -8,30 +11,29 @@
   <div class="col s12 center-align">
     <a href="{{ url_for('add_category') }}" class="btn-large black">
       Add Category <i class="fas fa-plus-square right"></i>
-  </a>
+    </a>
   </div>
 </div>
 <br>
 
 <div class="row">
-    {% for category in categories %}
-    <div class="col s12 m3">
-      <div class="card text-shadow">
-        <div class="card-image">
-          <img src="../static/img/menu.jpeg">
-          <span class="card-title">{{category.category_name}}</span>
-        </div>
-        
-        <div class="card-action">
-            <a href="{{ url_for('delete_category', category_id=category._id) }}" class="btn-small black accent-4 center-align">Delete</a>
-            <a href="{{ url_for('edit_category', category_id=category._id) }}" class="btn-small grey lighten-1 center-align">Edit</a>
-            <br>
-        </div>
+  {% for category in categories %}
+  <div class="col s12 m3">
+    <div class="card text-shadow">
+      <div class="card-image">
+        <img src="../static/img/menu.jpeg" alt="menu board">
+        <span class="card-title">{{category.category_name}}</span>
+      </div>
+
+      <div class="card-action">
+        <a href="{{ url_for('delete_category', category_id=category._id) }}"
+          class="btn-small black accent-4 center-align">Delete</a>
+        <a href="{{ url_for('edit_category', category_id=category._id) }}"
+          class="btn-small grey lighten-1 center-align">Edit</a>
+        <br>
       </div>
     </div>
-    {%endfor%}
+  </div>
+  {%endfor%}
 </div>
-
 {%endblock%}
-
-   

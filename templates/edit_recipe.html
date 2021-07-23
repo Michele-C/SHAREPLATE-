@@ -1,6 +1,10 @@
 {% extends "base.html" %}
 {% block content %}
 
+<!-- This file allows us to select recipes that we added to edit 
+and renders the form with all the detail to the screen to allow us 
+to update and save or quit. It selects the correct recipe by the recipes ID-->
+
 <h3 class=" text-darken-4 center-align">Edit Recipe</h3>
 
 <div class="row card-panel pink lighten-5">
@@ -9,16 +13,16 @@
         <div class="row">
             <div class="input-field col s12">
                 <i class="fas fa-utensils prefix pink-text"></i>
-                    <select id="category_name" name="category_name" class="validate" required>
-                        <option value="" disabled>Choose a Category:</option>
-                        {% for category in categories %}
-                            {% if category.category_name == recipe.category_name %}
-                                <option value="{{ category.category_name }}" selected>{{ category.category_name }}</option>
-                            {% else %}
-                                <option value="{{ category.category_name }}">{{ category.category_name }}</option>
-                            {% endif %}
-                        {% endfor %}
-                    </select>
+                <select id="category_name" name="category_name" class="validate" required>
+                    <option value="" disabled>Choose a Category:</option>
+                    {% for category in categories %}
+                    {% if category.category_name == recipe.category_name %}
+                    <option value="{{ category.category_name }}" selected>{{ category.category_name }}</option>
+                    {% else %}
+                    <option value="{{ category.category_name }}">{{ category.category_name }}</option>
+                    {% endif %}
+                    {% endfor %}
+                </select>
                 <label for="category_name">Category:</label>
             </div>
         </div>
@@ -26,8 +30,8 @@
         <div class="row">
             <div class="input-field col s12">
                 <i class="fas fa-utensils prefix pink-text"></i>
-                <input id="recipe_name" name="recipe_name" minlength="3" maxlength="50"
-                    value="{{recipe.recipe_name}}" type="text" class="validate" required>
+                <input id="recipe_name" name="recipe_name" minlength="3" maxlength="50" value="{{recipe.recipe_name}}"
+                    type="text" class="validate" required>
                 <label for="recipe_name">Recipe Name: </label>
             </div>
         </div>
@@ -35,8 +39,8 @@
         <div class="row">
             <div class="input-field col s12">
                 <i class="fas fa-utensils prefix pink-text"></i>
-                <input id="ingredients" name="ingredients" minlength="3" maxlength="500" 
-                    type="text" value="{{recipe.ingredients}}"class="validate" required>
+                <input id="ingredients" name="ingredients" minlength="3" maxlength="500" type="text"
+                    value="{{recipe.ingredients}}" class="validate" required>
                 <label for="ingredients">Ingredients:</label>
             </div>
         </div>
@@ -44,16 +48,16 @@
         <div class="row">
             <div class="input-field col s12">
                 <i class="fas fa-utensils prefix pink-text"></i>
-                    <select id="star_rating" name="star_rating" class="validate" required>
-                        <option value="" disabled>Choose a Star Rating:</option>
-                        {% for star in stars %}
-                            {% if star.star_rating == recipe.star_rating %}
-                                <option value="{{ star.star_rating }}" selected>{{ star.star_rating }}</option>
-                            {% else %}
-                                <option value="{{ star.star_rating }}">{{ star.star_rating }}</option>
-                            {% endif %}
-                        {% endfor %}
-                    </select>
+                <select id="star_rating" name="star_rating" class="validate" required>
+                    <option value="" disabled>Choose a Star Rating:</option>
+                    {% for star in stars %}
+                    {% if star.star_rating == recipe.star_rating %}
+                    <option value="{{ star.star_rating }}" selected>{{ star.star_rating }}</option>
+                    {% else %}
+                    <option value="{{ star.star_rating }}">{{ star.star_rating }}</option>
+                    {% endif %}
+                    {% endfor %}
+                </select>
                 <label for="star_rating">Star Rating:</label>
             </div>
         </div>
@@ -61,8 +65,8 @@
         <div class="row">
             <div class="input-field col s12">
                 <i class="fas fa-utensils prefix pink-text"></i>
-                <input id="cuisine" name="cuisine" minlength="4" maxlength="30"
-                    type="text" value="{{recipe.cuisine}}" class="validate">
+                <input id="cuisine" name="cuisine" minlength="4" maxlength="30" type="text" value="{{recipe.cuisine}}"
+                    class="validate">
                 <label for="cuisine"> Cuisine: </label>
             </div>
         </div>
@@ -70,8 +74,8 @@
         <div class="row">
             <div class="input-field col s12">
                 <i class="fas fa-utensils prefix pink-text"></i>
-                <input id="tools" name="tools" minlength="4" maxlength="30"
-                    type="text" value="{{recipe.tools}}"class="validate">
+                <input id="tools" name="tools" minlength="4" maxlength="30" type="text" value="{{recipe.tools}}"
+                    class="validate">
                 <label for="tools"> Tools Required: </label>
             </div>
         </div>
@@ -79,15 +83,16 @@
         <div class="row">
             <div class="input-field col s12">
                 <i class="fas fa-utensils prefix pink-text"></i>
-                <textarea id="method" name="method" minlength="5"
-                    class="materialize-textarea validate" required>{{- recipe.method -}}</textarea>
+                <textarea id="method" name="method" minlength="5" class="materialize-textarea validate"
+                    required>{{- recipe.method -}}</textarea>
                 <label for="Method">Method:</label>
             </div>
         </div>
         <!--Submit Button-->
         <div class="row">
             <div class="col s12 center-align">
-                <button class="btn waves-effect waves-light pink center text-shadow" type="submit" name="summit">Save Changes   
+                <button class="btn waves-effect waves-light pink center text-shadow" type="submit" name="summit">Save
+                    Changes
                     <i class="fas fa-edit right"></i>
                 </button>
                 <!-- cancel button -->

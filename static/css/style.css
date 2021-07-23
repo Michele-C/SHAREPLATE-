@@ -16,6 +16,9 @@ nav ul a {
     font-size: medium;
 }
 
+div #herocard{
+    padding-top: 50px;
+}
 .text-shadow {
     text-shadow: 2px 2px 2px rgba(5, 5, 5, 0.6);
 }
@@ -36,7 +39,7 @@ body {
 /* Images for home page and profile page */
 
 #hero-image {
-    height: 600px;
+    min-height: 100vh;
     width:100%;
     background: url("../img/heroimg.jpg");
 }

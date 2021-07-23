@@ -1,48 +1,49 @@
 {% extends "base.html" %}
 {% block content %}
 
-    <h3 class="center-align">Log In</h3>
+<h3 class="center-align">Log In</h3>
 
-    <div class="row">
-        <!-- Copied card set up form task manager mini project-->
+<div class="row">
+    <!-- I applied the card set up from task manager mini project. I liked the icons used and
+    so i kept them and applied the alpha numberic pattern required.-->
 
-        <form class="col s12 m8 offset-m2" method="POST" action="{{ url_for('login') }}">
-            <div class="card-panel">
-                <!-- username -->
-                <div class="row">
-					<div class="input-field col s12 white-text">
-						<i class="fas fa-user-cog prefix text-darken-4"></i>
-						<input id="username" name="username" type="text" minlength="3"
-                        maxlength="20" pattern="^[a-zA-Z0-9]{3,20}$" class="validate" required>
-						<label for="username">Username</label>
-					</div>
-                </div>
-                <!-- password field -->
-                <div class="row">
-                    <div class="input-field col s12 white-text">
-						<i class="fas fa-lemon prefix text-darken-4"></i>
-                        <input id="password" name="password" type="password" minlength="4"
-                         maxlength="15" pattern="^[a-zA-Z0-9]{4,15}$" class="validate black-text" required>
-                        <label for="password">Password</label>
-                    </div>
-                </div>
-                <!-- LOGIN button -->
-                <div class="row">
-                    <button type="submit" class="col s12 btn-large pink darken-3 text-shadow">
-                        LOGIN   <i class="fas fa-sign-in-alt"></i>
-                    </button>
+    <form class="col s12 m8 offset-m2" method="POST" action="{{ url_for('login') }}">
+        <div class="card-panel">
+            <!-- username -->
+            <div class="row">
+                <div class="input-field col s12 white-text">
+                    <i class="fas fa-user-cog prefix text-darken-4"></i>
+                    <input id="username" name="username" type="text" minlength="3" maxlength="20"
+                        pattern="^[a-zA-Z0-9]{3,20}$" class="validate" required>
+                    <label for="username">Username</label>
                 </div>
             </div>
-        </form>
-    </div>
-    <!-- If you are not registered yet, Here is the link-->
-    <div class="row">
-        <div class="col s12">
-            <p class="center-align">
-                Haven't seen you before! You should register at
-                <a href="{{ url_for('register') }}" class="light-blue-text text-darken-4">Sign Me Up!</a>
-            </p>
+            <!-- password field -->
+            <div class="row">
+                <div class="input-field col s12 white-text">
+                    <i class="fas fa-lemon prefix text-darken-4"></i>
+                    <input id="password" name="password" type="password" minlength="4" maxlength="15"
+                        pattern="^[a-zA-Z0-9]{4,15}$" class="validate black-text" required>
+                    <label for="password">Password</label>
+                </div>
+            </div>
+            <!-- LOGIN button -->
+            <div class="row">
+                <button type="submit" class="col s12 btn-large pink darken-3 text-shadow">
+                    LOGIN <i class="fas fa-sign-in-alt"></i>
+                </button>
+            </div>
         </div>
+    </form>
+</div>
+<!-- If you are not registered yet, Here is the link-->
+<div class="row">
+    <div class="col s12">
+        <p class="center-align">
+            Haven't seen you before! You should register at
+            <a href="{{ url_for('register') }}" class="light-blue-text text-darken-4">Sign Me Up!</a>
+        </p>
     </div>
+</div>
 
 {% endblock %}

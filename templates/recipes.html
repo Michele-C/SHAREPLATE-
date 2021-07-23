@@ -7,68 +7,69 @@
 
 <div class=" row  grey lighten-3">
   <form action="{{url_for('search')}}" method="post" class="col s12">
-        <div class="row valign-wrapper center-align">
-          <div class="input-field col s12 m8">
-            <i class="fas fa-search prefix white"></i>
-            <input type="text" name="query" id="query" class="validate black-text" minlength="3" required >
-            <label for="query" class="label-place"> Search Recipes </label>
-          </div>
-          <div class="col s12 4m">
-            <a href="{{ url_for('recipes') }}" class="btn-small black accent-4 center-align">Reset</a>
-            <button type="submit" class="btn-small pink accent-4 center-align">Search</button>
-          </div>
-        </div>
-     </form>
+    <div class="row valign-wrapper center-align">
+      <div class="input-field col s12 m8">
+        <i class="fas fa-search prefix white"></i>
+        <input type="text" name="query" id="query" class="validate black-text" minlength="3" required>
+        <label for="query" class="label-place"> Search Recipes </label>
+      </div>
+      <div class="col s12 4m">
+        <a href="{{ url_for('recipes') }}" class="btn-small black accent-4 center-align">Reset</a>
+        <button type="submit" class="btn-small pink accent-4 center-align">Search</button>
+      </div>
+    </div>
+  </form>
 </div>
 
 
-    {% if recipes|length>0 %}
-    <ul class="collapsible">
-        {% for recipe in recipes %}
-        <li>
-            <div class="collapsible-header white-text pink darken-3 text-shadow">
-              <!-- matching the buttons from tims lesson-->
-              <div class="col s3">
-                <i class="fas fa-carrot"></i>
-              </div>
-                <div class="col s9">
-                <strong>Recipe >  {{ recipe.recipe_name }}</strong>  : {{ recipe.star_rating }} rating  !
-                <i class="far fa-star white-text text-lighten-2 tooltipped"
-                data-position="right" data-tooltip="DELICIOUS!"></i>
-                {% if session.user|lower == recipe.created_by|lower %}
-                <a href="{{ url_for('delete_recipe', recipe_id=recipe._id) }}" class="btn-small black accent-4 white-text right">Delete</a>
-                <a href="{{ url_for('edit_recipe', recipe_id=recipe._id) }}" class="btn-small pink lighten-4 black-text right">Edit</a>
-                {% endif %}
-                </div>
-            </div>
-            <div class="collapsible-body">
-                <strong> Category  :  {{ recipe.category_name }}</strong>
-                <p> Ingredients : {{ recipe.ingredients }}</p>
-                <p> Cuisine : {{ recipe.cuisine }} </p>
-                <p> Required tools : {{ recipe.tools }} </p>
-                <p> Created By: {{recipe.created_by}}</p>
+{% if recipes|length>0 %} <!-- making sure there is actually a recipe for the search function-->
+<ul class="collapsible">
+  {% for recipe in recipes %}
+  <li>
+    <div class="collapsible-header white-text pink darken-3 text-shadow">
+      <!-- matching the buttons from tims lesson-->
+      <div class="col s3">
+        <i class="fas fa-carrot"></i>
+      </div>
+      <div class="col s9">
+        <strong>Recipe > {{ recipe.recipe_name }}</strong> : {{ recipe.star_rating }} rating !
+        <i class="far fa-star white-text text-lighten-2 tooltipped" data-position="right" data-tooltip="YUM!"></i>
+        {% if session.user|lower == recipe.created_by|lower %}
+        <a href="{{ url_for('delete_recipe', recipe_id=recipe._id) }}"
+          class="btn-small black accent-4 white-text right">Delete</a>
+        <a href="{{ url_for('edit_recipe', recipe_id=recipe._id) }}"
+          class="btn-small pink lighten-4 black-text right">Edit</a>
+        {% endif %}
+      </div>
+    </div>
+    <div class="collapsible-body">
+      <strong> Category : {{ recipe.category_name }}</strong>
+      <p> Ingredients : {{ recipe.ingredients }}</p>
+      <p> Cuisine : {{ recipe.cuisine }} </p>
+      <p> Required tools : {{ recipe.tools }} </p>
+      <p> Created By: {{recipe.created_by}}</p>
 
-                <hr>
-                <div class="col s12 m7">
-                    <h2 class="header">{{recipe.recipe_name}}</h2>
-                    <div class="card horizontal">
-                      <div class="card-image">
-                      <img src="static/img/recipecard.jpg">
-                      </div>
-                      <div class="card-stacked">
-                        <div class="card-content">
-                          <p>Method: <br>
-                            {{ recipe.method }}
-                            </p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+      <hr>
+      <div class="col s12 m7">
+        <h2 class="header">{{recipe.recipe_name}}</h2>
+        <div class="card horizontal">
+          <div class="card-image">
+            <img src="static/img/recipecard.jpg" alt="Old menu">
+          </div>
+          <div class="card-stacked">
+            <div class="card-content">
+              <p>Method: <br>
+                {{ recipe.method }}
+              </p>
             </div>
-        </li>
-        {% endfor %}
-    </ul>
-    {%else%}
-      <h3 class="center-align red-text">No Results Found!</h3>
-    {%endif%}
-{% endblock %}   
+          </div>
+        </div>
+      </div>
+    </div>
+  </li>
+  {% endfor %}
+</ul>
+{%else%}
+<h3 class="center-align red-text">No Results Found!</h3>
+{%endif%}
+{% endblock %}
