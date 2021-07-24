@@ -14,8 +14,9 @@ to edit and delete recipes-->
             <i class="fas fa-door-open"></i>
             Welcome {{ username|capitalize }}
           </h4>
-          <p class="center-align profile-para"> This is your profile page where you can <a class="blue-text text-shadow" href="{{ url_for('add_recipes') }}">ADD RECIPES</a>, 
-           see which recipes that you contributed. Update the recipes you have already submitted. Finally, you can delete the recipes that you
+          <p class="center-align profile-para"> This is your profile page where you see all the recipes that you have contributed to the site. You can also 
+            add more recipes by clicking on the link 
+             <a class="blue-text text-shadow" href="{{ url_for('add_recipes') }}">ADD RECIPES</a>. You can update the recipes you have already submitted. Finally, you can delete the recipes that you
             don't wish to share anymore with a click of a button. It's that easy!
           </p>
         </div>

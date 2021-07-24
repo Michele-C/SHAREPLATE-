@@ -1,102 +1,139 @@
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
 
-Welcome Michele-C,
 
-This is the Code Institute student template for Gitpod. We have preinstalled all of the tools you need to get started. You can safely delete this README.md file, or change it for your own project. Please do read it at least once, though! It contains some important information about Gitpod and the extensions we use. The last update to this file was: **July 2, 2021**
+# Welcome to Share Plate
 
-## Gitpod Reminders
+This site was set up by a passionate foodie for other passionate foodies. It is a casual and easy way to share and find unique and popular recipes. To use the app you need to first register. Once you become a member you will have a bevey of delicious recipes to choose from. Enjoy!
 
-To run a frontend (HTML, CSS, Javascript only) application in Gitpod, in the terminal, type:
 
-`python3 -m http.server`
+[The live website can be viewed here!](https://shareplate.herokuapp.com/)
 
-A blue button should appear to click: _Make Public_,
+![Am I responsive images](/static/images/responsive.png)
 
-Another blue button should appear to click: _Open Browser_.
+## Table of contents 
 
-To run a backend Python file, type `python3 app.py`, if your Python file is named `app.py` of course.
+1. [User Experience](#user-experience)
+   - [User Stories](#stories)
+   - [The 5 Planes](#planes)
+   - [Wireframes](#wireframes)
+2. [Database Schema](#dbschema)
+3. [Features](#features)
+4. [Technologies Used](#technologies)
+5. [Testing](#testing)
+6. [Database Creation](#database)
+7. [Deployment](#deployment)
+8. [Resources](#resources)
+9. [Credits](#credits)
+    - [Media](#media)
+    - [Code Snippets](#code)
+    - [Acknowledgements](#acknowledgements)
+10. [Technical Support](#technical)
+______
 
-A blue button should appear to click: _Make Public_,
+<a name="user-experience"></a>
+## User Experience (UX)
 
-Another blue button should appear to click: _Open Browser_.
+### User Stories
 
-In Gitpod you have superuser security privileges by default. Therefore you do not need to use the `sudo` (superuser do) command in the bash terminal in any of the lessons.
+This website is a membership only site which provides information about different recipes provided by other members. It is directed at the novice cook. It allows you to also contribute your own recipes, edit them and remove them if you don't want to share them anymore. The ingredents, method, cuisine, star-rating and tools required are provided by site owner and other users. Foodies will without doubt find "gems" of tasty recipes form all over the world.
 
-To log into the Heroku toolbelt CLI:
 
-1. Log in to your Heroku account and go to *Account Settings* in the menu under your avatar.
-2. Scroll down to the *API Key* and click *Reveal*
-3. Copy the key
-4. In Gitpod, from the terminal, run `heroku_config`
-5. Paste in your API key when asked
+- ####  User
+    1. I want a visual appealing site to appear when I click on the url.
+    2. I want a quick description of what the site is about and its purpose.
+    3. I want to easily navigate through the site to browse the content from other people.
+    4. I want to easily log in and out of the site.
+    5. I want my own area, personal to me, so that I can see the recipes that I contributed.
+    6. I want to be able to create, update and delete my own content. 
+    7. I want the site is responsive on all devices.
+    8. I want to easily search for an ingredient, for example eggs, and a list of recipes containing eggs appear for me to select from.
+    9. I want a star rating so that I pick the best recipe to try.
+    9. I want my previous searches to be still available when I log back in.
 
-You can now use the `heroku` CLI program - try running `heroku apps` to confirm it works. This API key is unique and private to you so do not share it. If you accidentally make it public then you can create a new one with _Regenerate API Key_.
+- ####  Admin (AKA SITE-OWNER)
+    1. As admin I want to read all the recipes.
+    1. As admin I want to add, edit and delete my recipes.
+    1. As admin I want to add new categories that have been requested by users.
+    1. As admin I want to manage categories of recipes. As well as adding them, I want to also edit and delete the category.
+    1. As admin I want to be able to see all users that have contributed to the site.
+    1. As admin I want to gather a database of emails so that in the future we can sell kitchen utensils etc to the members.
+    
+- #### User who wants to get recipe
+    1. I want this site to be exclusive - like a club - and so LOGin is required everytime.
+    2. I want to be able to quickly delete my recipes and edit them.
+    1. I want to get recipe by search option.
+    1. I want to be able to email and phone the site owner with querys and suggestions. 
+    
 
-------
+- #### User who wants to post recipe
+    1. I want to create my profile by sign up.
+    1. I want to easliy login and check my page.
+    1. I want to add new recipe on my page and available to all users of site.
+    1. I want to edit and delete my recipe only.
+    1. I want to contact the site owner.
+    1. I want easy access to social media at any time I am on the site.
 
-## Release History
 
-We continually tweak and adjust this template to help give you the best experience. Here is the version history:
 
-**July 2 2021:** Remove extensions that are not available in Open VSX.
 
-**June 30 2021:** Combined the P4 and P5 templates into one file, added the uptime script. See the FAQ at the end of this file.
+    
+<a name="deployment"></a>
+## Deployment
 
-**June 10 2021:** Added: `font_fix` script and alias to fix the Terminal font issue
+  1. Install all the requirements: In your development workspace open a terminal window and type: pip3 install -r requirements.txt.
 
-**May 10 2021:** Added `heroku_config` script to allow Heroku API key to be stored as an environment variable.
+  2. Create a database in MongoDB
 
-**April 7 2021:** Upgraded the template for VS Code instead of Theia.
+     - Login to your MongoDB account.
+     - Create a cluster and the database called shareplate.
+     - Create the following collections in the db: categories, recipes, stars, & users.
+     - Populate your database with some documents so that you have something to work with on the back end.
 
-**October 21 2020:** Versions of the HTMLHint, Prettier, Bootstrap4 CDN and Auto Close extensions updated. The Python extension needs to stay the same version for now.
+  3. Back in the IDE create the environment variables
+     - 
+     - Create the file env.py. This will contain all the envornment variables.
+        - Import os
+        - os.environ.setdefault("IP", "Added by developer")
+        - os.environ.setdefault("PORT", "Added by developer")
+        - os.environ.setdefault("SECRET_KEY", "Added by developer")
+        - os.environ.setdefault("MONGO_URI", "Added by developer")
+        - os.environ.setdefault("MONGO_DBNAME", "Added by developer")
+      - Create a .gitignore file in the root directory of the project.
+      - Add the env.py file in the .gitignore. 
+  4. Run the app: Open your terminal window in your IDE. Type python3 app.py and run the app or right click on the app.py file and from the dropdown click on run file in terminal.
+  
+- ### Heroku Deployment
+  1. Set up local workspace for Heroku. The requirements.txt file tell heroku which libraies/modules are needed for this application.
+     - In terminal window of your IDE type: pip3 freeze -- local > requirements.txt.
+     - In termial window of your IDE type: python app.py > Procfile 
+  2. Set up Heroku: create a Heroku account and create a new app and select your region.
+  3. Deployment method I used was 'Github'.
+     - Click on the Connect to GitHub section in the deploy tab in Heroku.
+       - Search for your repository and select it by clicking on connect.
+     - Go to the settings app in Heroku and go to Config Vars. Click on Reveal Config Vars.
+       - Enter the variables contained in your env.py file. IE: IP, PORT, SECRET_KEY, MONGO_URI, MONGO_DBNAME
+  4. Push the requirements.txt and Procfile to repository.
+     - $ git add requirements.txt
+     - $ git commit -m "Add requirements.txt"
+     - $ git add Procfile 
+     - $ git commit -m "Add Procfile"
+  5. Automatic deployment: Go to the deploy tab in Heroku and scroll down to Automatic deployments. Click on Enable Automatic Deploys. By Manual deploy click on Deploy Branch.
 
-**October 08 2020:** Additional large Gitpod files (`core.mongo*` and `core.python*`) are now hidden in the Explorer, and have been added to the `.gitignore` by default.
+  Heroku will receive the code from Github. This will take a few minutes to build. Click on "Open app" in the bottom right corner of your Heroku account. The app will open and the live link is available from the address bar. 
 
-**September 22 2020:** Gitpod occasionally creates large `core.Microsoft` files. These are now hidden in the Explorer. A `.gitignore` file has been created to make sure these files will not be committed, along with other common files.
+- ### Forking
+  
+  1. Go to the GitHub website and log in.
+  2. Locate the [Repository](https://github.com/Michele-C/SHAREPLATE-).
+  3. On the right-hand side of the Repository name, you'll see the 'Fork' button. It's located next to the 'Star' and 'Watch' buttons.
+  4. This will create a copy in your personal repository.
+  5. Once you're finished making changes you can locate the 'New Pull Request' button just above the file listing in the original repository.
 
-**April 16 2020:** The template now automatically installs MySQL instead of relying on the Gitpod MySQL image. The message about a Python linter not being installed has been dealt with, and the set-up files are now hidden in the Gitpod file explorer.
-
-**April 13 2020:** Added the _Prettier_ code beautifier extension instead of the code formatter built-in to Gitpod.
-
-**February 2020:** The initialisation files now _do not_ auto-delete. They will remain in your project. You can safely ignore them. They just make sure that your workspace is configured correctly each time you open it. It will also prevent the Gitpod configuration popup from appearing.
-
-**December 2019:** Added Eventyret's Bootstrap 4 extension. Type `!bscdn` in a HTML file to add the Bootstrap boilerplate. Check out the <a href="https://github.com/Eventyret/vscode-bcdn" target="_blank">README.md file at the official repo</a> for more options.
-
-------
-
-## FAQ about the uptime script
-
-**Why have you added this script?**
-
-It will help us to calculate how many running workspaces there are at any one time, which greatly helps us with cost and capacity planning. It will help us decide on the future direction of our cloud-based IDE strategy.
-
-**How will this affect me?**
-
-For everyday usage of Gitpod, it doesn’t have any effect at all. The script only captures the following data:
-
-- An ID that is randomly generated each time the workspace is started.
-- The current date and time
-- The workspace status of “started” or “running”, which is sent every 5 minutes.
-
-It is not possible for us or anyone else to trace the random ID back to an individual, and no personal data is being captured. It will not slow down the workspace or affect your work.
-
-**So….?**
-
-We want to tell you this so that we are being completely transparent about the data we collect and what we do with it.
-
-**Can I opt out?**
-
-Yes, you can. Since no personally identifiable information is being captured, we'd appreciate it if you let the script run; however if you are unhappy with the idea, simply run the following commands from the terminal window after creating the workspace, and this will remove the uptime script:
-
-```
-pkill uptime.sh
-rm .vscode/uptime.sh
-```
-
-**Anything more?**
-
-Yes! We'd strongly encourage you to look at the source code of the `uptime.sh` file so that you know what it's doing. As future software developers, it will be great practice to see how these shell scripts work.
-
----
-
-Happy coding!
+- ### Cloning 
+  
+  1. Go to the GitHub website and log in.
+  2. Locate the [Repository](https://github.com/Michele-C/SHAREPLATE-).
+  3. Under the Repository name locate 'Clone or Download' button in green.
+  4. To clone the repository using HTTPS click the link under "Clone with HTTPS".
+  5. Open your Terminal and go to a directory where you want the cloned directory to be copied in.
+  6. Type Git Clone and paste the URL you copied from the GitHub.
+  7. To create your local clone press Enter.
